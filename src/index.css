@@ -1,0 +1,51 @@
+/* 1. Global Reset & PWA Lock */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100dvh; /* Dynamic Viewport Height fixes the mobile browser URL bar jump */
+  
+  /* Kill the rubber-band bounce effect on iOS/Android */
+  overscroll-behavior: none;
+  overflow: hidden; 
+  
+  /* Set global background and font */
+  background-color: #f3f4f6;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Prevent native text highlighting & tap highlights to feel like a real app */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* 2. The App Container */
+#root {
+  width: 100%;
+  height: 100%;
+  /* Allow scrolling ONLY inside the app content area, never the body */
+  overflow-y: auto; 
+  overflow-x: hidden;
+  overscroll-behavior-y: contain; /* Prevents pull-to-refresh */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Re-enable text selection ONLY for inputs so users can copy/paste passwords */
+input, textarea {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+/* 4. Smooth scrolling behavior */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* 5. Hide the ugly default scrollbar but keep the scroll functionality */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
